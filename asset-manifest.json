@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/React-put-samura-1-100/static/css/main.3052e61e.css",
+    "main.js": "/React-put-samura-1-100/static/js/main.386f7782.js",
+    "static/js/787.28cb0dcd.chunk.js": "/React-put-samura-1-100/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/React-put-samura-1-100/index.html",
+    "main.3052e61e.css.map": "/React-put-samura-1-100/static/css/main.3052e61e.css.map",
+    "main.386f7782.js.map": "/React-put-samura-1-100/static/js/main.386f7782.js.map",
+    "787.28cb0dcd.chunk.js.map": "/React-put-samura-1-100/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3052e61e.css",
+    "static/js/main.386f7782.js"
+  ]
+}
