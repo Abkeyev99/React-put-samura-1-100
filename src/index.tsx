@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {state} from "./redux/state";
+import {addPost} from "./redux/state";
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -11,9 +13,15 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+    <BrowserRouter>
+
   <React.StrictMode>
-    <App state={state}/>
+    <App state={state}
+         addPost={addPost}
+    />
   </React.StrictMode>
+
+    </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

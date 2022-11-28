@@ -1,44 +1,11 @@
-// type  DialogsPageType = {
-//     messages: MessagesType[]
-//     dialogs:DialogsType[]
-// }
-//
-//
-// type ProfilePageType = {
-//     posts:PostType[]
-//
-// }
-//
-// export type MessagesType = {
-//     id: number
-//     message: string
-// }
-//
-// export type DialogsType = {
-//     id: number
-//     name: string
-// }
-//
-// export type PostType = {
-//     id: number,
-//     message: string,
-//     likesCount: number
-// }
-//
-// export type StateType = {
-//     dialogsPage:DialogsPageType
-//     profilePage:ProfilePageType
-// }
-
-
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
-    // sidebar: {}
+    sidebar: {}
 }
 
 export type PostType = {
-    id:number
+    id: number
     message: string
     likesCount: number
 }
@@ -66,14 +33,19 @@ export type DialogsPageType = {
     message: MessageType[]
 }
 
+
+type addPostType = {
+
+}
+
 // export type ActionType = {
 //     body: string;
 //     type: string;
-    // newTitle: string;
+// newTitle: string;
 // }
 
 export let state: StateType = {
-    profilePage:  {
+    profilePage: {
         posts: [
             {id: 1, message: 'Всем привет!!!', likesCount: 102},
             {id: 2, message: 'Работаем на React!!', likesCount: 120},
@@ -98,5 +70,15 @@ export let state: StateType = {
             {id: 5, message: 'Yo'},
         ],
 
-    }
+    },
+    sidebar: {}
+}
+
+export let addPost = (PostMessage:string) => {
+    const newPost: PostType = {
+        id: 5,
+        message: PostMessage,
+        likesCount: 0
+    };
+    state.profilePage.posts.push(newPost)
 }
