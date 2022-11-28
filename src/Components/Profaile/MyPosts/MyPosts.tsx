@@ -1,33 +1,46 @@
 import React, {LegacyRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {PostType} from "../../../redux/state";
+import {PostType, updateNewPostText} from "../../../redux/state";
+import {text} from "stream/consumers";
 
 
 type MyPostsPropsType = {
     posts: PostType[]
-    addPost: (PostMessage: string) => void
+    addPost: () => void
+    newPostText: string
+    updateNewPostText:(newText: string ) => void
 }
 
 
 export const MyPosts = (props: MyPostsPropsType) => {
-    let postsElement = props.posts.map((p) => <Post message={p.message} likesCount={p.likesCount} id={p.id}/>)
-
+    let postsElement = props.posts.map((p) =>
+        <Post message={p.message}
+              likesCount={p.likesCount}
+              id={p.id}/>)
+    debugger
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
-        if (newPostElement.current){
-            props.addPost(newPostElement.current.value);
-        }
+            props.addPost();
     }
-
+    let onPostChange = () => {
+     if (newPostElement.current ){
+         const text = newPostElement.current.value
+         props.updateNewPostText(text)
+     }
+    }
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea
+                        onChange={onPostChange}
+                        ref={newPostElement}
+                        value={props.newPostText}
+                    />
                 </div>
                 <div>
                     <button onClick={addPost}>OK</button>

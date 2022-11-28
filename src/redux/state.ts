@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../index";
+
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
@@ -8,6 +10,8 @@ export type PostType = {
     id: number
     message: string
     likesCount: number
+
+
 }
 
 export type DialogType = {
@@ -24,6 +28,7 @@ export type ProfilePageType = {
     // newPostTitle: string;
     // users: string
     posts: PostType[]
+    newPostText:string
 
 }
 
@@ -34,9 +39,6 @@ export type DialogsPageType = {
 }
 
 
-type addPostType = {
-
-}
 
 // export type ActionType = {
 //     body: string;
@@ -51,13 +53,14 @@ export let state: StateType = {
             {id: 2, message: 'Работаем на React!!', likesCount: 120},
             {id: 3, message: 'Это моя социальная сеть!!', likesCount: 122},
         ],
+        newPostText: 'it-camasutra.com',
     },
     dialogsPage: {
         dialogs: [
 
             {id: 1, name: 'Azamat'},
             {id: 2, name: 'Abzal'},
-            {id: 3, name: 'Martias'},
+            {id: 3, name: 'Martinas'},
             {id: 4, name: 'Rustem'},
             {id: 5, name: 'Maks'},
             {id: 6, name: 'Ademi'},
@@ -74,11 +77,22 @@ export let state: StateType = {
     sidebar: {}
 }
 
-export let addPost = (PostMessage:string) => {
+export const addPost = () => {
     const newPost: PostType = {
         id: 5,
-        message: PostMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     };
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = '';
+    renderEntireTree(state);
+}
+
+export const updateNewPostText = (newText:string) => {
+    state.profilePage.newPostText = newText;
+    renderEntireTree(state);
+}
+
+export  const  subscriber = (observer: string) => {
+    renderEntireTree = observer;
 }
