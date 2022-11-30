@@ -9,7 +9,7 @@ type MyPostsPropsType = {
     posts: PostType[]
     addPost: () => void
     newPostText: string
-    updateNewPostText:(newText: string ) => void
+    updateNewPostText: (newText: string) => void
 }
 
 
@@ -18,17 +18,16 @@ export const MyPosts = (props: MyPostsPropsType) => {
         <Post message={p.message}
               likesCount={p.likesCount}
               id={p.id}/>)
-    debugger
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
-            props.addPost();
+        props.addPost();
     }
     let onPostChange = () => {
-     if (newPostElement.current ){
-         const text = newPostElement.current.value
-         props.updateNewPostText(text)
-     }
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            props.updateNewPostText(text)
+        }
     }
 
     return (

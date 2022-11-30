@@ -1,4 +1,3 @@
-import {renderEntireTree} from "../index";
 
 export type StateType = {
     profilePage: ProfilePageType
@@ -77,6 +76,10 @@ export let state: StateType = {
     sidebar: {}
 }
 
+let renderEntireTree = () => {
+
+}
+
 export const addPost = () => {
     const newPost: PostType = {
         id: 5,
@@ -85,14 +88,15 @@ export const addPost = () => {
     };
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = '';
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
 export const updateNewPostText = (newText:string) => {
     state.profilePage.newPostText = newText;
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
-export  const  subscriber = (observer: string) => {
+
+export  const  subscriber = (observer: () => void) => {
     renderEntireTree = observer;
 }
