@@ -1,8 +1,7 @@
 import React, {LegacyRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {PostType, updateNewPostText} from "../../../redux/state";
-import {text} from "stream/consumers";
+import {PostType} from "../../../redux/state";
 
 
 type MyPostsPropsType = {
@@ -17,7 +16,8 @@ export const MyPosts = (props: MyPostsPropsType) => {
     let postsElement = props.posts.map((p) =>
         <Post message={p.message}
               likesCount={p.likesCount}
-              id={p.id}/>)
+              id={p.id}/>
+    )
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
