@@ -1,3 +1,4 @@
+
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
@@ -38,12 +39,34 @@ export type DialogsPageType = {
 
 export type StoreType = {
     _state: StateType
-    updateNewPostText: (newText: string) => void
-    addPost: () => void
     _callSubscriber: () => void
     subscriber: (observer: () => void) => void
     getState: () => StateType
+    dispatch: (action:ActionsTypes) => void
 }
+
+
+
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>
+
+
+
+export const addPostAC = (newPostText:string) => {
+    return {
+        type:'ADD POST',
+        newPostText: newPostText
+    } as const
+}
+export const changeNewTextAC = (newText:string) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: newText
+    } as const
+}
+
+
+
+
 
 let store: StoreType = {
     _state: {
@@ -76,28 +99,32 @@ let store: StoreType = {
         },
         sidebar: {}
     },
-    getState() {
-        return this._state;
-    },
     _callSubscriber() {
         console.log('state changed');
     },
-    addPost() {
-        const newPost: PostType = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber();
-    },
-    updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber();
+
+    getState() {
+        return this._state;
     },
     subscriber(observer) {
         this._callSubscriber = observer;
+    },
+
+
+    dispatch(action) {
+        if (action.type === 'ADD POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            };
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber();
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber();
+        }
     }
 }
 export default store;
