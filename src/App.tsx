@@ -8,9 +8,11 @@ import {Route} from "react-router-dom";
 import {ActionsTypes, StateType, StoreType} from "./redux/state";
 
 
+
 type AppPropsType = {
     state: StateType
     dispatch: (action: ActionsTypes) => void
+    store:StoreType
 }
 
 
@@ -21,16 +23,15 @@ function App(props: AppPropsType) {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path='/dialogs' render={() =>
-                    <Dialogs state={props.state.dialogsPage}/>}/>
+                    <Dialogs  store={props.store}/>}/>
                 <Route path='/profile' render={() =>
                     <Profile
                         state={props.state.profilePage}
-                        dispatch={props.dispatch}/>
-                }
+                        dispatch={props.dispatch}/>}
                 />
             </div>
         </div>
     );
 }
 
-export default App;
+    export default App;

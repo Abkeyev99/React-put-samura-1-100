@@ -1,7 +1,8 @@
 import React, {LegacyRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, addPostAC, PostType} from "../../../redux/state";
+import { addPostAC} from "../../../redux/profile-reducer";
+import {ActionsTypes, PostType} from "../../../redux/state";
 
 
 type MyPostsPropsType = {
@@ -9,6 +10,8 @@ type MyPostsPropsType = {
     newPostText: string
     dispatch: (action: ActionsTypes) => void
 }
+
+
 
 
 export const MyPosts = (props: MyPostsPropsType) => {
