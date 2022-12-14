@@ -5,14 +5,14 @@ import {Navbar} from "./Components/Navbar/Navbar";
 import {Profile} from "./Components/Profaile/Profile";
 import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import {ActionsTypes, StateType, StoreType} from "./redux/state";
+import {ActionsTypes, StateType, StoreType} from "./redux/store";
 
 
 
-type AppPropsType = {
+ export type AppPropsType = {
     state: StateType
     dispatch: (action: ActionsTypes) => void
-    store:StoreType
+    store:any
 }
 
 

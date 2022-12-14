@@ -3,7 +3,9 @@ import s from './Dialogs.module.css'
 import {DialogsItem} from "./DialogsItem/DialogsItem";
 import {Message} from "./Message/Message";
 import  { sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
-import {StoreType} from "../../redux/state";
+import {StoreType} from "../../redux/store";
+import {Button} from "@mui/material";
+
 
 
 type DialogsPropsType = {
@@ -43,7 +45,7 @@ const state = props.store.getState().dialogsPage
                         placeholder='Enter your message'>
                     </textarea></div>
                     <div>
-                        <button onClick={onSendMessageClick}>send</button>
+                        <Button onClick={onSendMessageClick} variant="contained" color="success">send</Button>
                     </div>
                 </div>
             </div>

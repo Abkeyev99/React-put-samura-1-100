@@ -6,10 +6,10 @@ export const ProfaileInfo = () => {
         <div>
             <div className={s.bestFoto}>
                 <img
-                    src='https://hlpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'/>
+                    src='https://cdn.tlgrm.app/channels/11/53/1153086394/avatar640.jpg?v=2'/>
             </div>
             <div className={s.descriptionBlock}>
-                Ava + description
+                Avatar + Description
             </div>
         </div>
     );

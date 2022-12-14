@@ -1,14 +1,14 @@
 .nav{
     grid-area: n;
-    background-color: saddlebrown;
+    background-color: darkseagreen;
     padding: 20px;
     /*margin: 5px;*/
 
 }
 .item a{
-    color: honeydew;
-    text-decoration: none;
+    color: black;
+    text-decoration: black;
 }
 .item a.activeLink{
-    color: limegreen;
+    color: aliceblue;
 }

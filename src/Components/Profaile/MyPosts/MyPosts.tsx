@@ -2,7 +2,8 @@ import React, {LegacyRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import { addPostAC} from "../../../redux/profile-reducer";
-import {ActionsTypes, PostType} from "../../../redux/state";
+import {ActionsTypes, PostType} from "../../../redux/store";
+import {Button} from "@mui/material";
 
 
 type MyPostsPropsType = {
@@ -42,10 +43,11 @@ export const MyPosts = (props: MyPostsPropsType) => {
                         onChange={onPostChange}
                         ref={newPostElement}
                         value={props.newPostText}
+                        placeholder='Enter new posts'
                     />
                 </div>
                 <div>
-                    <button onClick={addPost}>OK</button>
+                    <Button onClick={addPost} variant="contained" component="label" color="success">Add Post</Button>
                 </div>
             </div>
             <div className={s.posts}>

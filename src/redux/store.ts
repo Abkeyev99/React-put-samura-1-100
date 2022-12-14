@@ -65,7 +65,7 @@ let store: StoreType = {
                 {id: 2, message: 'Работаем на React!!', likesCount: 120},
                 {id: 3, message: 'Это моя социальная сеть!!', likesCount: 122},
             ],
-            newPostText: 'it-camasutra.com',
+            newPostText: "",
         },
         dialogsPage: {
             dialogs: [

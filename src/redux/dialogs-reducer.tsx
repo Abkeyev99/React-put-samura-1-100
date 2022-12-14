@@ -1,9 +1,27 @@
 import React from 'react';
-import {ActionsTypes, DialogsPageType} from "./state";
+import {ActionsTypes, DialogsPageType} from "./store";
 
+let initialState = {
+        dialogs: [
 
+            {id: 1, name: 'Azamat'},
+            {id: 2, name: 'Abzal'},
+            {id: 3, name: 'Martinas'},
+            {id: 4, name: 'Rustem'},
+            {id: 5, name: 'Maks'},
+            {id: 6, name: 'Ademi'},
+        ],
+        message: [
+            {id: 1, message: 'Hi'},
+            {id: 2, message: 'How are you?'},
+            {id: 3, message: 'Yo'},
+            {id: 4, message: 'Yoo'},
+            {id: 5, message: 'Yo'},
+        ],
+        newMessageBody: ""
+};
 
-export const dialogsReducer = (state:DialogsPageType,action:ActionsTypes) => {
+export const dialogsReducer = (state:DialogsPageType = initialState,action:ActionsTypes) => {
 
 
     switch (action.type) {
