@@ -3,16 +3,17 @@ import './App.css';
 import {Header} from "./Components/Header/Header";
 import {Navbar} from "./Components/Navbar/Navbar";
 import {Profile} from "./Components/Profaile/Profile";
-import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import {ActionsTypes, StateType, StoreType} from "./redux/store";
+import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
 
 
 
  export type AppPropsType = {
     state: StateType
     dispatch: (action: ActionsTypes) => void
-    store:any
+     store:any
+
 }
 
 
@@ -23,11 +24,9 @@ function App(props: AppPropsType) {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path='/dialogs' render={() =>
-                    <Dialogs  store={props.store}/>}/>
+                    <DialogsContainer  store={props.store}/>}/>
                 <Route path='/profile' render={() =>
-                    <Profile
-                        state={props.state.profilePage}
-                        dispatch={props.dispatch}/>}
+                    <Profile store={props.store}/>}
                 />
             </div>
         </div>

@@ -1,7 +1,6 @@
 import React, {LegacyRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import { addPostAC} from "../../../redux/profile-reducer";
 import {ActionsTypes, PostType} from "../../../redux/store";
 import {Button} from "@mui/material";
 
@@ -9,10 +8,9 @@ import {Button} from "@mui/material";
 type MyPostsPropsType = {
     posts: PostType[]
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
+    addPost:() => void
+    updateNewPostText:(newText: string) => void
 }
-
-
 
 
 export const MyPosts = (props: MyPostsPropsType) => {
@@ -23,14 +21,13 @@ export const MyPosts = (props: MyPostsPropsType) => {
     )
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    let addPost = () => {
-        props.dispatch(addPostAC(props.newPostText));
+    let OnAddPost = () => {
+        props.addPost();
     }
     let onPostChange = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text } as const
-            props.dispatch(action);
+            props.updateNewPostText(text);
         }
     }
 
@@ -47,7 +44,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
                     />
                 </div>
                 <div>
-                    <Button onClick={addPost} variant="contained" component="label" color="success">Add Post</Button>
+                    <Button onClick={OnAddPost} variant="contained" component="label" color="success">Add Post</Button>
                 </div>
             </div>
             <div className={s.posts}>
